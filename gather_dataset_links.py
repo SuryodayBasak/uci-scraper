@@ -1,6 +1,4 @@
-import mechanize
 import re
-import collections
 from urllib.request import urlopen
 
 datasets_url = "https://archive.ics.uci.edu/ml/datasets.html?format=&task=reg&att=&area=&numAtt=&numIns=&type=&sort=nameUp&view=table"
@@ -23,9 +21,9 @@ links = re.findall('datasets/(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-
 
 links.append(index_1)
 links.append(index_2)
-links=set(links)
-for row in links:
-    print(row)
-    print()
+links=sorted(set(links))
 
-print(len(links))
+with open('links.txt', 'w') as links_file:
+    for row in links:
+        links_file.write(row+'\n')
+links_file.close()
