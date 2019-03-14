@@ -13,5 +13,3 @@ for row in content:
     response = urlopen(link)
     html = str(response.read())
     db_link = re.findall(db_link_handle+'(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', html)
-    print(db_link)
-
